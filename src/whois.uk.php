@@ -36,6 +36,10 @@ class uk_handler {
             'owner.type' => 'Registrant type:',
             'domain.created' => 'Registered on:',
             'domain.changed' => 'Last updated:',
+<<<<<<< HEAD
+=======
+            'domain.expires' => 'Renewal date:',
+>>>>>>> 617be3ee3f8e79e4ccce5a540472e82193e19224
             'domain.expires' => 'Expiry date:',
             'domain.nserver' => 'Name servers:',
             'domain.sponsor' => 'Registrar:',
