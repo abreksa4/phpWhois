@@ -33,8 +33,26 @@ class lv_handler
 
     function parse($data_str, $query)
     {
+        $translate = [
+            'contact nic-hdl:' => 'handle',
+            'contact name:' => 'name'
+        ];
+
+        $items = [
+            'admin' => 'Contact type:      Admin',
+            'tech' => 'Contact type:      Tech',
+            'zone' => 'Contact type:      Zone',
+            'owner.name' => 'Registrar:',
+            'owner.email' => 'Registrar email:',
+            'domain.status' => 'Status:',
+            'domain.created' => 'Registered:',
+            'domain.changed' => 'Last updated:',
+            'domain.nserver.' => 'NS:',
+            '' => '%'
+        ];
+
         $r = [];
-        $r['regrinfo'] = generic_parser_a($data_str['rawdata']);
+        $r['regrinfo'] = easy_parser($data_str['rawdata'], $items, 'ymd', $translate);
 
         if (! empty($r['regrinfo']['domain']['status'])) {
             switch ($r['regrinfo']['domain']['status']) {
