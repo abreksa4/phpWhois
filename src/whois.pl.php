@@ -40,6 +40,10 @@ class pl_handler {
         $r = array();
         $r['regrinfo'] = easy_parser($data_str['rawdata'], $items, 'ymd');
 
+        if (strpos($data_str['rawdata'][1], 'No information available about domain name') !== false) {
+            $r['regrinfo']['registered'] = 'no';
+        }
+
         $r['regyinfo'] = array(
             'referrer' => 'http://www.dns.pl/english/index.html',
             'registrar' => 'NASK'
