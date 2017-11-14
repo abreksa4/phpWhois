@@ -35,7 +35,6 @@ class de_handler {
             'domain.nserver.' => 'Nserver:',
             'domain.nserver.#' => 'Nsentry:',
             'domain.status' => 'Status:',
-            'domain.changed' => 'Changed:',
             'domain.desc.' => 'Descr:',
             'owner' => '[Holder]',
             'admin' => '[Admin-C]',
@@ -64,7 +63,6 @@ class de_handler {
         if (!isset($r['regrinfo']['domain']['status']) || $r['regrinfo']['domain']['status'] == "free") {
             $r['regrinfo']['registered'] = 'no';
         } else {
-            $r['regrinfo']['domain']['changed'] = substr($r['regrinfo']['domain']['changed'], 0, 10);
             $r['regrinfo']['registered'] = 'yes';
         }
         return $r;
