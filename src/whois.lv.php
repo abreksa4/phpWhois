@@ -24,19 +24,35 @@
 
 require_once('whois.parser.php');
 
-if (! defined('__SHOP_HANDLER__')) {
-    define('__SHOP_HANDLER__', 1);
+if (! defined('__LV_HANDLER__')) {
+    define('__LV_HANDLER__', 1);
 }
 
-class shop_handler
+class lv_handler
 {
 
-    function parse($data, $query)
+    function parse($data_str, $query)
     {
         $r = [];
-        $r['regrinfo'] = generic_parser_b($data['rawdata']);
-        $r['regyinfo']['referrer'] = 'https://nic.shop/';
-        $r['regyinfo']['registrar'] = 'NicSHOP';
+        $r['regrinfo'] = generic_parser_a($data_str['rawdata']);
+
+        if (! empty($r['regrinfo']['domain']['status'])) {
+            switch ($r['regrinfo']['domain']['status']) {
+                case 'free':
+                    $r['regrinfo']['registered'] = 'no';
+                    break;
+                case 'active':
+                    $r['regrinfo']['registered'] = 'yes';
+                    break;
+                default:
+                    $r['regrinfo']['registered'] = 'unknown';
+            }
+        } else {
+            $r['regrinfo']['registered'] = 'unknown';
+        }
+
+        $r['regyinfo']['referrer'] = 'https://www.nic.lv/';
+        $r['regyinfo']['registrar'] = 'Nic LV';
         return $r;
     }
 }
