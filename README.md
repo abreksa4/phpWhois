@@ -1,12 +1,12 @@
-Improved
+Changes from main repo:
 ------------
-I have already added many new extensions and I will merge any pull request for bugfixes and domains extensions update to the original phpWhois as it's inactive since a long time.
+Merged:  
+https://github.com/plzz/phpWhois  
+https://github.com/webalternative/phpWhois
 
-I will try to update the composer informations for this repo in few weeks.
+all PRs I'll will try to merge. Since this library is IN USE.  
 
-Sorry for my bad english...i'm a native french speaker.
-
-ORIGINAL README FILE:
+ORIGINAL README FILE BELOW:
 ------------
 
 Introduction
