@@ -339,7 +339,7 @@ function generic_parser_b($rawdata, $items = array(), $dateformat = 'mdy', $hasr
         reset($items);
 
         while (list($match, $field) = each($items)) {
-            $pos = strpos($val, $match);
+            $pos = stripos($val, $match);
 
             if ($pos === false || $field === '') {
                 continue;
@@ -527,6 +527,7 @@ function get_contact($array, $extra_items = array(), $has_org = false) {
         return array();
 
     $items = array(
+        'fax ext:' => 'fax-ext',
         'fax..:' => 'fax',
         'fax.' => 'fax',
         'fax-no:' => 'fax',
@@ -539,6 +540,7 @@ function get_contact($array, $extra_items = array(), $has_org = false) {
         'fax' => 'fax',
         'tel. ' => 'phone',
         'tel:' => 'phone',
+        'phone ext:' => 'phone-ext',
         'phone::' => 'phone',
         'phone:' => 'phone',
         'phone-' => 'phone',
@@ -551,8 +553,11 @@ function get_contact($array, $extra_items = array(), $has_org = false) {
         'last name:' => 'name.last',
         'street:' => 'address.street',
         'address:' => 'address.street.',
+        'state/province:' => 'address.state',
+        'postal code:' => 'address.zip',
         'language:' => '',
         'location:' => 'address.city',
+        'city:' => 'address.city',
         'country:' => 'address.country',
         'name:' => 'name',
         'last modified:' => 'changed'
